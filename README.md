@@ -1,24 +1,16 @@
-# README
+# Nook's eCranny
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+This application is meant to demonstrate an eCommerce website using the Ruby on Rails framework.
+It uses information from the [Animal Crossing New Horizons API]("http://acnhapi.com/doc").
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Configuration
+To get this project running, after cloning this repository enter the following commands:
+```
+cd nooks-ecranny
+bundle install
+yarn install
+rails db:migrate
+rails db:seed
+```
+The above commands install the ruby and javascript dependencies, as well as set up a SQLite database with the required data using the seed script.
