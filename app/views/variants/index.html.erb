@@ -1,5 +1,4 @@
-<h1><%= link_to "Nook's eCranny", items_path %></h1>
-<h2>All Variants</h2>
+<h2 class="title is-2">All Variants</h2>
 <ul>
 <% @variants.each do |variant| %>
     <li><%= link_to variant.name, variant %></li>

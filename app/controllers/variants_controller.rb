@@ -4,6 +4,6 @@ class VariantsController < ApplicationController
   end
 
   def show
-    @variant = Variant.find(params[:id])
+    @variant = Variant.find_by(name: params[:name])
   end
 end

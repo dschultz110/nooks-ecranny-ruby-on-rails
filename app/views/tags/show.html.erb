@@ -1,7 +1,6 @@
-<h1><%= link_to "Nook's eCranny", items_path %></h1>
-<h2><%= @tag.name %></h2>
+<h2 class="title is-2"><%= @tag.name %></h2>
 <ul>
 <% @tag.items.each do |item| %>
-    <li><%= link_to item.name, item %></li>
+    <li><%= link_to item.name.titleize, item %></li>
 <% end %>
 </ul>

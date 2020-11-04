@@ -1,5 +1,3 @@
-<h1><%= link_to "Nook's eCranny", items_path %></h1>
-<ul>
 <% @items.each do |item| %>
     <li>
         <%= link_to item.name.titleize, item %>
