@@ -1,0 +1,7 @@
+<h1>Nook's eCranny</h1>
+<h2><%= @variant.name %></h2>
+<ul>
+<% @variant.items.each do |item| %>
+    <li><%= link_to item.name, item %></li>
+<% end %>
+

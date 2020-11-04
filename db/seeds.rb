@@ -19,7 +19,7 @@ def assign_values(item, type)
 
   ## if buy-price doesn't exist, the item is only a blueprint
   if !item["buy-price"].nil?
-    type = Type.find_or_create_by(name: "Houseware")
+    type = Type.find_or_create_by(name: type)
     type = type
     price = item["buy-price"]
   else
