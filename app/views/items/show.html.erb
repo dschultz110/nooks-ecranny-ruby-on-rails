@@ -1,0 +1,6 @@
+<h1>Items#show</h1>
+<%= @item.name.titleize %>
+<% @variants.each do |variant| %>
+<img src="<%= variant.image %>" class="variant_<%= variant.variant.id %>" alt="<%= @item.name.titleize %>">
+<% end %>
+

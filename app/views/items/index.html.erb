@@ -1,0 +1,8 @@
+<h1>Items#index</h1>
+<ul>
+<% @items.each do |item| %>
+    <li>
+        <%= link_to item.name.titleize, item %>
+    </li>
+<% end %>
+</ul>
