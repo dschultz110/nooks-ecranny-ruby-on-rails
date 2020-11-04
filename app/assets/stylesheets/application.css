@@ -14,5 +14,5 @@
  *= require_self
  */
  .card {
-    height: 350px;
+    height: 100%;
 }
