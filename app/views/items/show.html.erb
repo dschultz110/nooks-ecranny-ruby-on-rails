@@ -1,6 +1,9 @@
-<h1>Items#show</h1>
-<%= @item.name.titleize %>
+<h1><%= link_to "Nook's eCranny", items_path %></h1>
+<h2><%= @item.name.titleize %></h2>
 <% @variants.each do |variant| %>
-<img src="<%= variant.image %>" class="variant_<%= variant.variant.id %>" alt="<%= @item.name.titleize %>">
+<img src="<%= variant.image %>" id="variant_<%= variant.variant.id %>" alt="<%= @item.name.titleize %>">
 <% end %>
+<p><%= @item.description %></p>
+<h3><%= @item.price %> bells</h3>
+<h4><%= @item.tag.name %> | <%= @item.type.name %></h4>
 
