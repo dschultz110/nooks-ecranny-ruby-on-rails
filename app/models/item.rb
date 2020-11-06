@@ -9,8 +9,4 @@ class Item < ApplicationRecord
   validates :name, :description, :price, presence: true
   validates :name, uniqueness: true
   validates :price, numericality: { only_integer: true }
-
-  def to_param
-    name
-  end
 end

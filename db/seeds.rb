@@ -1,6 +1,7 @@
 require 'net/http'
 require 'json'
 
+AdminUser.delete_all
 ItemVariant.delete_all
 OrderItem.delete_all
 Customer.delete_all
@@ -67,4 +68,5 @@ misc.keys.each do |key|
     assign_values(item, 'Miscellaneous')
   end
 end
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
