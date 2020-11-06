@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # resources :pages, except: %i[show]
-  get "/pages/:permalink" => "pages#permalink"
+  get "/:permalink" => "pages#permalink"
 
   resources :items, only: %i[index show]
 
