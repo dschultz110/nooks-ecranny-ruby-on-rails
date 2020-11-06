@@ -2,6 +2,7 @@
 
 body {
     font-family: $font-main;
+    background: $off-white;
 }
 
 header, footer, .splash {
@@ -9,22 +10,40 @@ header, footer, .splash {
 }
 
 header{
-    background: $light-blue;
+    background: $off-white;
+    h1 {
+        font-family: $font-display;
+        display: inline-block;
+        padding: 70px 0;
+        a {
+            color: $dark-blue;
+
+            &:hover {
+                color: lighten($dark-blue, 20%);
+            }
+        }
+    }
+    .section {
+        padding: 0;
+    }
+
+    .links {
+        text-align: center;
+    }
 }
 
 .splash{
-    background: $dark-blue;
+    background: $light-blue;
 }
 
 footer {
     font-size: 0.8em;
     background: $dark-blue;
     bottom: 0;
-    height: auto;
     padding: 0;
 
     img {
-        max-width: 100%;
+        max-height: 150px;
     }
 
     ul {
@@ -43,17 +62,12 @@ footer {
         color: $off-white;
         font-size: 1.2em;
     }
-}
 
-h1 {
-    font-family: $font-display;
-    display: inline-block;
-    padding: 70px 0;
-    a {
-        color: $off-white;
+    .section {
+        padding: 0;
     }
 }
 
 a {
-    color: $light-green;
+    color: $red;
 }
