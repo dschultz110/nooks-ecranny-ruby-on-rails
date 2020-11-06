@@ -6,10 +6,13 @@
 //
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
+$light-blue: #81F1F7;
+$primary-color: darken($light-blue, 50%);
 
+@import "~arctic_admin/src/scss/main";
 // Active Admin's got SASS!
-@import "~@activeadmin/activeadmin/src/scss/mixins";
-@import "~@activeadmin/activeadmin/src/scss/base";
+// @import "~@activeadmin/activeadmin/src/scss/mixins";
+// @import "~@activeadmin/activeadmin/src/scss/base";
 
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
