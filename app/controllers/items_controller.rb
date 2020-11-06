@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.limit(50)
+    @items = Item.limit(50).includes(:tag, :type, :variants)
   end
 
   def show
-    @item = Item.find_by(name: params[:name])
+    @item = Item.find(params[:id])
     @variants = []
     variants = @item.variants
     variants.each do |variant|
