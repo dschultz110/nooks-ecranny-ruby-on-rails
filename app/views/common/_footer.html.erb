@@ -5,26 +5,27 @@
         <div class="column">
             <p class="heading">Customer Service</p>
             <ul>
-            <li>Help & Support</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
-            <li>Feedback</li>
-            <li>Return Policy</li>
+            <li><%= link_to 'About Us', '/pages/about' %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Contact Us', '/pages/contact' %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Feedback', root_path %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Help & Support', root_path %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Return Policy', root_path %> &nbsp; &#9654;</li>
             </ul>
         </div>
         <div class="column">
         <p class="heading">Nook Shopping</p>
             <ul>
-            <li>Shop</li>
-            <li>View Your Account</li>
-            <li>Drop Off Box</li>
-            <li>DIY Recipes</li>
-            <li>Catalogue</li>
+            <li><%= link_to 'View Your Account', root_path %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Shop', items_path %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Houseware', '/types/Houseware' %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Wallmounted', '/types/Wallmounted' %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Blueprints', '/types/Blueprint' %> &nbsp; &#9654;</li>
+            <li><%= link_to 'Miscellaneous', '/types/Houseware' %> &nbsp; &#9654;</li>
             </ul>
         </div>
         <div class="column">
         <p class="heading">Credits</p>
-            <ul>
+            <ul class="credits">
             <li>Nook Inc.</li>
             <li>All Rights Reserved</li>
             <li>Inspired by:</li>

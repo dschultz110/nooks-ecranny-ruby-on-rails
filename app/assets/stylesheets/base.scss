@@ -6,7 +6,7 @@ body {
 }
 
 header{
-    background: $off-white;
+    background: lighten($light-blue, 10%);
     h1 {
         font-family: $font-display;
         display: inline-block;
@@ -52,6 +52,18 @@ footer {
     }
 
     li {
+        color: $red;
+
+        a {
+            color: $off-white;
+
+            &:hover{
+                color: $red;
+            }
+        }
+    }
+
+    .credits li {
         color: $off-white;
     }
 

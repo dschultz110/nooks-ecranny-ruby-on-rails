@@ -3,7 +3,7 @@
         <h2 class="title is-2">Product Types</h2>
         <ul>
         <% @types.each do |type| %>
-            <li><%= link_to type.name, type %></li>
+            <li><%= link_to type.name, "/types/#{type.name}" %></li>
         <% end %>
         </ul>
     </div>

@@ -3,7 +3,7 @@ class TypesController < ApplicationController
     @types = Type.all
   end
 
-  def show
-    @type = Type.find(params[:id])
+  def name
+    @type = Type.find_by(name: params[:name])
   end
 end
