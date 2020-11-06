@@ -1,8 +1,12 @@
-<h2 class="title is-2"><%= @item.name.titleize %></h2>
-<% @variants.each do |variant| %>
-<img src="<%= variant.image %>" id="variant_<%= variant.variant.id %>" alt="<%= @item.name.titleize %>">
-<% end %>
-<p><%= @item.description %></p>
-<h3><%= @item.price %> bells</h3>
-<h4><%= link_to @item.tag.name, @item.tag %> | <%= link_to @item.type.name, @item.type %></h4>
+<section class="section">
+    <div class="container">
+        <h2 class="title is-2"><%= @item.name.titleize %></h2>
+        <% @variants.each do |variant| %>
+        <img src="<%= variant.image %>" id="variant_<%= variant.variant.id %>" alt="<%= @item.name.titleize %>">
+        <% end %>
+        <p><%= @item.description %></p>
+        <h3><%= @item.price %> bells</h3>
+        <h4><%= link_to @item.tag.name, @item.tag %> | <%= link_to @item.type.name, @item.type %></h4>
+    </div>
+</section>
 

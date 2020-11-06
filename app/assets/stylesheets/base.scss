@@ -1,0 +1,59 @@
+@use '_variables.scss';
+
+body {
+    font-family: $font-main;
+}
+
+header, footer, .splash {
+    width: 100%;
+}
+
+header{
+    background: $light-blue;
+}
+
+.splash{
+    background: $dark-blue;
+}
+
+footer {
+    font-size: 0.8em;
+    background: $dark-blue;
+    bottom: 0;
+    height: auto;
+    padding: 0;
+
+    img {
+        max-width: 100%;
+    }
+
+    ul {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    li {
+        color: $off-white;
+    }
+
+    .heading{
+        display: block;
+        width: 70%;
+        margin: 0 auto;
+        color: $off-white;
+        font-size: 1.2em;
+    }
+}
+
+h1 {
+    font-family: $font-display;
+    display: inline-block;
+    padding: 70px 0;
+    a {
+        color: $off-white;
+    }
+}
+
+a {
+    color: $light-green;
+}

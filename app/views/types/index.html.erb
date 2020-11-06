@@ -1,6 +1,10 @@
-<h2 class="title is-2">Product Types</h2>
-<ul>
-<% @types.each do |type| %>
-    <li><%= link_to type.name, type %></li>
-<% end %>
-</ul>
+<section class="section">
+    <div class="container">
+        <h2 class="title is-2">Product Types</h2>
+        <ul>
+        <% @types.each do |type| %>
+            <li><%= link_to type.name, type %></li>
+        <% end %>
+        </ul>
+    </div>
+</section>

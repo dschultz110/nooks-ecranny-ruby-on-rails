@@ -1,6 +1,10 @@
-<h2 class="title is-2">All Variants</h2>
-<ul>
-<% @variants.each do |variant| %>
-    <li><%= link_to variant.name, variant %></li>
-<% end %>
-</ul>
+<section class="section">
+    <div class="container">
+        <h2 class="title is-2">All Variants</h2>
+        <ul>
+        <% @variants.each do |variant| %>
+            <li><%= link_to variant.name, variant %></li>
+        <% end %>
+        </ul>
+    </div>
+</section>

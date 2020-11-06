@@ -1,6 +1,10 @@
-<h2 class="title is-2"><%= @tag.name %></h2>
-<ul>
-<% @tag.items.each do |item| %>
-    <li><%= link_to item.name.titleize, item %></li>
-<% end %>
-</ul>
+<section class="section">
+    <div class="container">
+        <h2 class="title is-2"><%= @tag.name %></h2>
+        <ul>
+        <% @tag.items.each do |item| %>
+            <li><%= link_to item.name.titleize, item %></li>
+        <% end %>
+        </ul>
+    </div>
+</section>
