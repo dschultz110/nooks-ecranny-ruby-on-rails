@@ -9,8 +9,19 @@ Item.delete_all
 Type.delete_all
 Tag.delete_all
 Variant.delete_all
+Page.delete_all
 
 Variant.create(name: "none")
+Page.create(
+  title: "About Us",
+  content: "Nook’s Cranny has been selling Villagers the highest quality goods since 2001. Tom Nook, the founder of Nook’s Cranny, has trusted his two nephews, Timmy and Tommy, as the salesmen at the storefront. As their business demands increase, it is in the company’s best interest to expand their market to the internet. Having an online store will allow Nook’s Cranny to provide furniture, equipment, blueprints, and more to any Villager with an internet connection! ",
+  permalink: "about"
+)
+Page.create(
+  title: "Contact Us",
+  content: "<ul><li>Email: inquire@nook.inc</li><li>Phone: 555-1289</li></ul>",
+  permalink: "contact"
+)
 
 def assign_values(item, type)
   tag = Tag.find_or_create_by(name: item["tag"])
