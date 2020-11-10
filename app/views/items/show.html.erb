@@ -6,7 +6,7 @@
         <% end %>
         <p><%= @item.description %></p>
         <h3><%= @item.price %> bells</h3>
-        <h4><%= link_to @item.tag.name, @item.tag %> | <%= link_to @item.type.name, @item.type %></h4>
+        <h4><%= link_to @item.tag.name, @item.tag %> | <%= link_to @item.type.name, "/types/#{@item.type.name}" %></h4>
     </div>
 </section>
 
