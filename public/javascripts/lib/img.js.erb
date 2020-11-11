@@ -1,0 +1,9 @@
+document.getElementsByTagName('select')[0].onchange = function() {
+    var i = this.selectedIndex;
+    var val = this.value;
+    var text = this.children[i].innerHTML.trim();
+    console.log(text);
+    console.log(val);
+
+    alert("<%= @item.name %>")
+}

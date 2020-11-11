@@ -1,12 +1,17 @@
 <section class="section">
     <div class="container">
         <h2 class="title is-2"><%= @item.name.titleize %></h2>
-        <% @variants.each do |variant| %>
-        <img src="<%= variant.image %>" id="variant_<%= variant.variant.id %>" alt="<%= @item.name.titleize %>">
+
+        <%= form_with do %>
+            <%= select_tag 'variant', options_for_select(@variant_options) %>
         <% end %>
+
+        <div id="item-image"></div>
+
         <p><%= @item.description %></p>
         <h3><%= @item.price %> bells</h3>
         <h4><%= link_to @item.tag.name, @item.tag %> | <%= link_to @item.type.name, "/types/#{@item.type.name}" %></h4>
     </div>
 </section>
 
+<script type="text/javascript" src="/javascripts/lib/img.js.erb"></script>

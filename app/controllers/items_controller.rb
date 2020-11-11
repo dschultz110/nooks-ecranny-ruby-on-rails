@@ -5,10 +5,13 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @variants = []
+    @item_variants = []
     variants = @item.variants
     variants.each do |variant|
-      @variants << ItemVariant.find_by(item: @item, variant: variant)
+      @item_variants << ItemVariant.includes(:variant, :item).find_by(item: @item, variant: variant)
     end
+    @variant_options = @item_variants.map { |option| [option.variant.name, option.item.id ]}.to_h
+
+
   end
 end
