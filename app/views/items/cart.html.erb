@@ -1,7 +1,15 @@
 <section class="section">
     <div class="container">
         <div class="columns is-multiline">
-            <%= render partial: 'item', collection: @items %>
+            <ul>
+                <% @items.each do |item| %>
+                    <li>
+                        <%= image_tag(item.image) %>
+                        <%= item.item.name %>
+                        <%= item.variant.name %>
+                    </li>
+                <% end %>
+            </ul>
         </div>
     </div>
 </section>

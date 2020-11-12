@@ -14,17 +14,25 @@ class ItemsController < ApplicationController
   end
 
   def cart
-
+    item_variants = session[:items]
+    @items = []
+    item_variants.each do |variant|
+      @items << ItemVariant.find(variant)
+    end
   end
 
   def add_to_cart
     id = params[:id].to_i
-    session[:items] << id
+    session[:items] << id unless session[:items].include?(id)
     redirect_to items_path
   end
 
   def remove_from_cart
     id = params[:id].to_i
+    items = session[:items]
+
+    # session[:items] = items.delete_if { |item| item[:item_variant_id] == id }
+    # session[:items].delete(session[:items].select{|item| item[:item_variant_id] == id})
     session[:items].delete(id)
     redirect_to items_path
   end
