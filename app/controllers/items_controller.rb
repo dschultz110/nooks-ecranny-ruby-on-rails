@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     variants.each do |variant|
       @item_variants << ItemVariant.includes(:variant, :item).find_by(item: @item, variant: variant)
     end
-    @variant_options = @item_variants.map { |option| [option.variant.name, option.item.id ]}.to_h
+    @variant_options = @item_variants.map { |option| [option.variant.name, option.id ]}.to_h
 
 
   end
