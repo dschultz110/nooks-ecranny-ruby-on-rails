@@ -1,37 +1,46 @@
 <header>
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <h1 class="title is-2"><%= link_to "Nook's eCranny", root_path %></h1>
-                </div>
-                <div class="column">
-                    <div class="columns">
-                        <div class="column"><%= link_to 'Sign In', items_path %></div>
-                        <div class="column"><%= link_to 'Cart', items_path %></div>
-                    </div>
-                </div>
-            </div>
-            <div class="columns">
-                <div class="column"></div>
-                <div class="column">
-                    <div class="columns links">
-                        <div class="column"><%= link_to 'Shop', items_path, class: "navlink" %></div>
-                        <div class="column"><%= link_to 'Categories', types_path, class: "navlink" %></div>
-                        <div class="column"><%= link_to 'Tags', tags_path, class: "navlink" %></div>
-                        <div class="column"><%= link_to 'Variants', variants_path, class: "navlink" %></div>
-                    </div>
-
-                    <div class="scontent"></div>
-                </div>
-            </div>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title is-2"><%= link_to "Nook's eCranny", root_path %></h1>
         </div>
-        <div class="container">
-            <div class="columns">
-                <div class="column">
-                    <p id="search">Search...</p>
-                </div>
-            </div>
+        <div class="column">
+          <div class="columns">
+            <div class="column"><%= link_to 'Sign In', items_path %></div>
+            <div class="column"><%= link_to 'Cart', items_path %></div>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="columns">
+        <div class="column"></div>
+          <div class="column">
+            <div class="columns links">
+              <div class="column"><%= link_to 'Shop', items_path, class: "navlink" %></div>
+              <div class="column"><%= link_to 'Categories', types_path, class: "navlink" %></div>
+              <div class="column"><%= link_to 'Tags', tags_path, class: "navlink" %></div>
+              <div class="column"><%= link_to 'Variants', variants_path, class: "navlink" %></div>
+            </div>
+            <div class="scontent"></div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <p id="search">Search...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </header>
+
+<details>
+  <summary>You Cart</summary>
+    <ul>
+      <%= session[:items].each do |item| %>
+        <li><%= item %> | <%= link_to 'Remove from Cart', remove_from_cart_path(item), method: :delete %></li>
+      <% end %>
+    </ul>
+</details>

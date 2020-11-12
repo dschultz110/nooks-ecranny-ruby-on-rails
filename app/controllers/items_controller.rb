@@ -11,7 +11,21 @@ class ItemsController < ApplicationController
       @item_variants << ItemVariant.includes(:variant, :item).find_by(item: @item, variant: variant)
     end
     @variant_options = @item_variants.map { |option| [option.variant.name, option.item.id ]}.to_h
+  end
 
+  def cart
 
+  end
+
+  def add_to_cart
+    id = params[:id].to_i
+    session[:items] << id
+    redirect_to items_path
+  end
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:items].delete(id)
+    redirect_to items_path
   end
 end

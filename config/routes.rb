@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get "/pages/:permalink" => "pages#permalink"
   get "/types/:name" => "types#name"
 
+  post "/add_to_cart/:id", to: "items#add_to_cart", as: "add_to_cart"
+  delete "/remove_from_cart/:id", to: "items#remove_from_cart", as: "remove_from_cart"
+  get "/cart", to: "items#cart", as: "cart"
+
   resources :items, only: %i[index show]
 
   resources :variants, only: %i[index show]
