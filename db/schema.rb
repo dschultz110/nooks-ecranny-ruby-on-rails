@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_06_215513) do
+ActiveRecord::Schema.define(version: 2020_11_12_151537) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -57,6 +57,23 @@ ActiveRecord::Schema.define(version: 2020_11_06_215513) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "item_variant_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_variant_id"], name: "index_cart_items_on_item_variant_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_carts_on_customer_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -117,6 +134,21 @@ ActiveRecord::Schema.define(version: 2020_11_06_215513) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "shopping_cart_items", force: :cascade do |t|
+    t.integer "ShoppingCart_id", null: false
+    t.integer "ItemVariant_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ItemVariant_id"], name: "index_shopping_cart_items_on_ItemVariant_id"
+    t.index ["ShoppingCart_id"], name: "index_shopping_cart_items_on_ShoppingCart_id"
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -136,6 +168,9 @@ ActiveRecord::Schema.define(version: 2020_11_06_215513) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "item_variants"
+  add_foreign_key "carts", "customers"
   add_foreign_key "item_variants", "items"
   add_foreign_key "item_variants", "variants"
   add_foreign_key "items", "tags"
@@ -144,4 +179,6 @@ ActiveRecord::Schema.define(version: 2020_11_06_215513) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "variants"
   add_foreign_key "orders", "customers"
+  add_foreign_key "shopping_cart_items", "ItemVariants"
+  add_foreign_key "shopping_cart_items", "ShoppingCarts"
 end

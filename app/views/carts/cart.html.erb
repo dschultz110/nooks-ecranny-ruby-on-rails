@@ -1,0 +1,22 @@
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline">
+            <% if @cart_items.length > 0 %>
+            <ul>
+                <% @cart_items.each do |cart_item| %>
+                    <li>
+                        <ul>
+                            <li><%= image_tag(cart_item.item_variant.image) %></li>
+                            <li><%= cart_item.item_variant.item.name.titleize %> - <%= cart_item.item_variant.variant.name %></li>
+                            <li><%= cart_item.quantity %></li>
+                            <li><%= link_to 'Remove', remove_from_cart_path(cart_item.item_variant.id), method: :delete %></li>
+                        </ul>
+                    </li>
+                <% end %>
+            </ul>
+            <% else %>
+            <p>There are no items in your cart.</p>
+            <% end %>
+        </div>
+    </div>
+</section>
