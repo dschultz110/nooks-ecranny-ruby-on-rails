@@ -96,6 +96,10 @@ header, footer, .splash {
     background: $light-blue;
 }
 
+figure {
+    display: inline-block;
+}
+
 footer {
     font-size: 0.8em;
     background: $dark-blue;

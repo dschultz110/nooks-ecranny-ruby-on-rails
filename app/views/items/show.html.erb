@@ -2,8 +2,19 @@
     <div class="container">
         <h2 class="title is-2"><%= @item.name.titleize %></h2>
 
+        <% @item_variants.each do |variant| %>
+            <figure>
+                <%= image_tag(variant.image) %>
+                <figcaption><%= variant.variant.name %></figcaption>
+            </figure>
+        <% end %>
+
         <%= form_with do %>
+            <%= label_tag("Colour: ") %>
             <%= select_tag 'variant', options_for_select(@variant_options) %>
+            <%= label_tag("Quantity: ") %>
+            <%= number_field('quantity', in: 1.0..100.0, step: 1) %>
+            <%= submit_tag("Add to Cart") %>
         <% end %>
 
         <div id="item-image"></div>
@@ -14,4 +25,4 @@
     </div>
 </section>
 
-<script type="text/javascript" src="/javascripts/lib/img.js.erb"></script>
+<%# <script type="text/javascript" src="/javascripts/lib/img.js.erb"></script> %>
