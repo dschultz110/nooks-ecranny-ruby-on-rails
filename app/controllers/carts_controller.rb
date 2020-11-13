@@ -14,12 +14,12 @@ class CartsController < ApplicationController
   def add_to_cart
     @selected_variant = params[:variant].to_i
     session[:items] << @selected_variant unless session[:items].include?(@selected_variant)
-    @quantity = params[:quantity]
+    @quantity = params[:quantity].to_i
 
     cart = Cart.find(session[:cart])
     variant = ItemVariant.find(@selected_variant)
 
-    cart_item = CartItem.find(cart: cart, item_variant: variant)
+    cart_item = CartItem.find_by(cart: cart, item_variant: variant)
     if cart_item.nil?
       CartItem.create(cart: cart, item_variant: variant, quantity: @quantity)
     else
