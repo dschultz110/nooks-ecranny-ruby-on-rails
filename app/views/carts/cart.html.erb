@@ -8,7 +8,11 @@
                         <ul>
                             <li><%= image_tag(cart_item.item_variant.image) %></li>
                             <li><%= cart_item.item_variant.item.name.titleize %> - <%= cart_item.item_variant.variant.name %></li>
-                            <li><%= cart_item.quantity %></li>
+                                <%= form_with(url: "/update_cart/#{cart_item.item_variant.id}") do %>
+                                    <%= label_tag("Quantity: ") %>
+                                    <%= number_field_tag 'quantity', cart_item.quantity, min: 1, max: 100, step: 1 %>
+                                    <%= submit_tag("Update") %>
+                                <% end %>
                             <li><%= link_to 'Remove', remove_from_cart_path(cart_item.item_variant.id), method: :delete %></li>
                         </ul>
                     </li>

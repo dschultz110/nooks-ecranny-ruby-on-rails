@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
       @cart = Cart.create
       session[:cart] = @cart.id
     end
+
+    @item_size = CartItem.where(cart: @cart).size
+
   end
 
   def customer
