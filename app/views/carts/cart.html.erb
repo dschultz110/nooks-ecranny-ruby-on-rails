@@ -13,7 +13,7 @@
                                     <%= number_field_tag 'quantity', cart_item.quantity, min: 1, max: 100, step: 1 %>
                                     <%= submit_tag("Update") %>
                                 <% end %>
-                            <li><%= link_to 'Remove', remove_from_cart_path(cart_item.item_variant.id), method: :delete %></li>
+                            <li><%= link_to 'Remove', remove_from_cart_path(cart_item.item_variant.id) %></li>
                         </ul>
                     </li>
                 <% end %>

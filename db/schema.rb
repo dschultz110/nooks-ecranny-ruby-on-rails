@@ -134,21 +134,6 @@ ActiveRecord::Schema.define(version: 2020_11_12_151537) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "shopping_cart_items", force: :cascade do |t|
-    t.integer "ShoppingCart_id", null: false
-    t.integer "ItemVariant_id", null: false
-    t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["ItemVariant_id"], name: "index_shopping_cart_items_on_ItemVariant_id"
-    t.index ["ShoppingCart_id"], name: "index_shopping_cart_items_on_ShoppingCart_id"
-  end
-
-  create_table "shopping_carts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -179,6 +164,4 @@ ActiveRecord::Schema.define(version: 2020_11_12_151537) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "variants"
   add_foreign_key "orders", "customers"
-  add_foreign_key "shopping_cart_items", "ItemVariants"
-  add_foreign_key "shopping_cart_items", "ShoppingCarts"
 end
