@@ -1,2 +1,3 @@
 <%= render partial: 'splash' %>
-<%= render partial: 'newitems' %>
+<%= render partial: 'new_items' unless @new_items.length == 0 %>
+<%= render partial: 'updated_items' unless @updated_items.length == 0 %>

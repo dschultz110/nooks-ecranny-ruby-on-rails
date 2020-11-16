@@ -1,0 +1,11 @@
+<section class="section">
+    <div class="container">
+        <h2 class="title is-1">Recently Updated!</h2>
+        <div class="columns is-multiline">
+            <%= render partial: 'items/item', collection: @updated_items %>
+        </div>
+    </div>
+    <div class="container pt-5">
+        <%= link_to raw("See all Recently Updated Items &nbsp;&#9654;"), items_path %>
+    </div>
+</section>
