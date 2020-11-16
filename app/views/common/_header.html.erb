@@ -30,7 +30,12 @@
       <div class="container">
         <div class="columns">
           <div class="column">
-            <p id="search">Search...</p>
+            <br>
+            <%= form_for "", url: items_path, role: "search", method: :get do %>
+              <%= text_field_tag :search, @search_term, placeholder: "Search items..." %>
+              <%= select_tag :type_id, options_for_select(@type_options) %>
+              <%= submit_tag("Search Items") %>
+            <% end %>
           </div>
         </div>
       </div>

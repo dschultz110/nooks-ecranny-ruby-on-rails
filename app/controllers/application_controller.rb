@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
     end
 
     @item_size = CartItem.where(cart: @cart).size
+    types = Type.all.map { |option| [option.name, option.id ]}.to_h
+    @type_options = {'Any Type': 0}.merge(types)
 
   end
 

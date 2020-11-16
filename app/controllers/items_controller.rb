@@ -1,6 +1,17 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.limit(50).includes(:tag, :type, :variants)
+    if params[:search]
+      @search_term = params[:search]
+      @type_id = params[:type_id].to_i
+      if @type_id != 0
+        @type = Type.find(@type_id)
+      end
+      @search = true
+      @items = Item.search_by(@search_term, @type_id).includes(:tag, :type, :variants)
+    else
+      @items = Item.limit(50).includes(:tag, :type, :variants).order("name ASC")
+    end
+
   end
 
   def show
