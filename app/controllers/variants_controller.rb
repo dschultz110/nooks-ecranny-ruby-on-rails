@@ -1,6 +1,6 @@
 class VariantsController < ApplicationController
   def index
-    @variants = Variant.all
+    @variants = Variant.all.order("name ASC")
   end
 
   def show

@@ -1,6 +1,6 @@
 class TypesController < ApplicationController
   def index
-    @types = Type.all
+    @types = Type.all.order("name ASC")
   end
 
   def name
