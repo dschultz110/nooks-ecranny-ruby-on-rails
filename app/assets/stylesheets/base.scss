@@ -147,3 +147,9 @@ footer {
 a {
     color: $red;
 }
+
+.pagination {
+    a, em {
+        padding: 5px;
+    }
+}

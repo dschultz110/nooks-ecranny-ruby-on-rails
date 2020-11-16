@@ -7,9 +7,9 @@ class ItemsController < ApplicationController
         @type = Type.find(@type_id)
       end
       @search = true
-      @items = Item.search_by(@search_term, @type_id).includes(:tag, :type, :variants)
+      @items = Item.search_by(@search_term, @type_id).includes(:tag, :type, :variants).paginate(:page => params[:page], per_page: 20)
     else
-      @items = Item.limit(50).includes(:tag, :type, :variants).order("name ASC")
+      @items = Item.includes(:tag, :type, :variants).order("name ASC").paginate(:page => params[:page], per_page: 20)
     end
 
   end
