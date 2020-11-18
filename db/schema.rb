@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_151537) do
+ActiveRecord::Schema.define(version: 2020_11_18_204344) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -84,6 +84,18 @@ ActiveRecord::Schema.define(version: 2020_11_12_151537) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "gsts", force: :cascade do |t|
+    t.decimal "rate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hsts", force: :cascade do |t|
+    t.decimal "rate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "item_variants", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "variant_id", null: false
@@ -134,6 +146,17 @@ ActiveRecord::Schema.define(version: 2020_11_12_151537) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.decimal "pst"
+    t.integer "gst_id", null: false
+    t.integer "hst_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gst_id"], name: "index_provinces_on_gst_id"
+    t.index ["hst_id"], name: "index_provinces_on_hst_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -164,4 +187,6 @@ ActiveRecord::Schema.define(version: 2020_11_12_151537) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "variants"
   add_foreign_key "orders", "customers"
+  add_foreign_key "provinces", "gsts"
+  add_foreign_key "provinces", "hsts"
 end

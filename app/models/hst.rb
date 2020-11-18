@@ -1,0 +1,2 @@
+class Hst < ApplicationRecord
+end

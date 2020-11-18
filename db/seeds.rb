@@ -1,24 +1,47 @@
-require 'net/http'
-require 'json'
+require "net/http"
+require "json"
 
 AdminUser.delete_all
 ItemVariant.delete_all
 OrderItem.delete_all
 Customer.delete_all
+Province.delete_all
+Hst.delete_all
+Gst.delete_all
 Item.delete_all
 Type.delete_all
 Tag.delete_all
 Variant.delete_all
 Page.delete_all
 
+gst0 = Gst.find_or_create_by(rate: 0.0)
+gst5 = Gst.find_or_create_by(rate: 0.05)
+hst0 = Hst.find_or_create_by(rate: 0.0)
+hst13 = Hst.find_or_create_by(rate: 0.13)
+hst15 = Hst.find_or_create_by(rate: 0.15)
+
+Province.create(name: "Alberta", pst: 0.0, hst: hst0, gst: gst5)
+Province.create(name: "British Columbia", pst: 0.07, hst: hst0, gst: gst5)
+Province.create(name: "Manitoba", pst: 0.07, hst: hst0, gst: gst5)
+Province.create(name: "New Brunswick", pst: 0.0, hst: hst15, gst: gst0)
+Province.create(name: "Newfoundland and Labrador", pst: 0.0, hst: hst15, gst: gst0)
+Province.create(name: "Northwest Territories", pst: 0.0, hst: hst0, gst: gst5)
+Province.create(name: "Nova Scotia", pst: 0.0, hst: hst15, gst: gst0)
+Province.create(name: "Nunavut", pst: 0.0, hst: hst0, gst: gst5)
+Province.create(name: "Ontario", pst: 0.0, hst: hst13, gst: gst0)
+Province.create(name: "Prince Edward Island", pst: 0.0, hst: hst15, gst: gst0)
+Province.create(name: "Quebec", pst: 0.0975, hst: hst0, gst: gst5)
+Province.create(name: "Saskatchewan", pst: 0.06, hst: hst0, gst: gst5)
+Province.create(name: "Yukon", pst: 0.0, hst: hst0, gst: gst5)
+
 Page.create(
-  title: "About Us",
-  content: "Nook’s Cranny has been selling Villagers the highest quality goods since 2001. Tom Nook, the founder of Nook’s Cranny, has trusted his two nephews, Timmy and Tommy, as the salesmen at the storefront. As their business demands increase, it is in the company’s best interest to expand their market to the internet. Having an online store will allow Nook’s Cranny to provide furniture, equipment, blueprints, and more to any Villager with an internet connection! ",
+  title:     "About Us",
+  content:   "Nook’s Cranny has been selling Villagers the highest quality goods since 2001. Tom Nook, the founder of Nook’s Cranny, has trusted his two nephews, Timmy and Tommy, as the salesmen at the storefront. As their business demands increase, it is in the company’s best interest to expand their market to the internet. Having an online store will allow Nook’s Cranny to provide furniture, equipment, blueprints, and more to any Villager with an internet connection! ",
   permalink: "about"
 )
 Page.create(
-  title: "Contact Us",
-  content: "<ul><li>Email: inquire@nook.inc</li><li>Phone: 555-1289</li></ul>",
+  title:     "Contact Us",
+  content:   "<ul><li>Email: inquire@nook.inc</li><li>Phone: 555-1289</li></ul>",
   permalink: "contact"
 )
 
@@ -46,37 +69,39 @@ def assign_values(item, type)
   ItemVariant.create(item: new_item, variant: new_variant, image: image)
 end
 
-houseware_url = 'http://acnhapi.com/v1/houseware/'
+houseware_url = "http://acnhapi.com/v1/houseware/"
 houseware_uri = URI(houseware_url)
 houseware_response = Net::HTTP.get(houseware_uri)
 houseware = JSON.parse(houseware_response)
 
 houseware.keys.each do |key|
-  for item in houseware[key] do
-    assign_values(item, 'Houseware')
+  houseware[key].each do |item|
+    assign_values(item, "Houseware")
   end
 end
 
-wallmounted_url = 'http://acnhapi.com/v1/wallmounted/'
+wallmounted_url = "http://acnhapi.com/v1/wallmounted/"
 wallmounted_uri = URI(wallmounted_url)
 wallmounted_response = Net::HTTP.get(wallmounted_uri)
 wallmounted = JSON.parse(wallmounted_response)
 
 wallmounted.keys.each do |key|
-  for item in wallmounted[key] do
-    assign_values(item, 'Wallmounted')
+  wallmounted[key].each do |item|
+    assign_values(item, "Wallmounted")
   end
 end
 
-misc_url = 'http://acnhapi.com/v1/misc/'
+misc_url = "http://acnhapi.com/v1/misc/"
 misc_uri = URI(misc_url)
 misc_response = Net::HTTP.get(misc_uri)
 misc = JSON.parse(misc_response)
 
 misc.keys.each do |key|
-  for item in misc[key] do
-    assign_values(item, 'Miscellaneous')
+  misc[key].each do |item|
+    assign_values(item, "Miscellaneous")
   end
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+if Rails.env.development?
+  AdminUser.create!(email: "admin@example.com", password: "password", password_confirmation: "password")
+end
