@@ -11,11 +11,6 @@
       </div>
 
       <div class="field">
-        <%= f.label :province %><br />
-        <%= f.select :province_id, @provinces %>
-      </div>
-
-      <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -26,6 +21,33 @@
       <div class="field">
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <h4 class="title is-4">Address Details</h4>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :street_address %><br />
+        <%= f.text_field :street %>
+      </div>
+
+      <div class="field">
+        <%= f.label :city %><br />
+        <%= f.text_field :city %>
+      </div>
+
+      <div class="field">
+        <%= f.label :postal_code %><br />
+        <%= f.text_field :postal %>
+      </div>
+
+      <div class="field">
+        <%= f.label :province %><br />
+        <%= f.select :province_id, @provinces %>
       </div>
 
       <div class="actions">

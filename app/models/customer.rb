@@ -6,5 +6,5 @@ class Customer < ApplicationRecord
   has_many :orders
   has_one :cart
 
-  validates :email, presence: true
+  validates :email, :name, :street, :city, :postal, presence: true
 end
