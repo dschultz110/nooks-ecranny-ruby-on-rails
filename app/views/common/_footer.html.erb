@@ -15,7 +15,9 @@
         <div class="column">
         <p class="heading">Nook Shopping</p>
             <ul>
-            <li><%= link_to 'View Your Account', root_path %> &nbsp; &#9654;</li>
+            <% if customer_signed_in? %>
+                <li><%= link_to 'View Your Account', edit_customer_registration_path %> &nbsp; &#9654;</li>
+            <% end %>
             <li><%= link_to 'Shop', items_path %> &nbsp; &#9654;</li>
             <li><%= link_to 'Houseware', '/types/Houseware' %> &nbsp; &#9654;</li>
             <li><%= link_to 'Wallmounted', '/types/Wallmounted' %> &nbsp; &#9654;</li>

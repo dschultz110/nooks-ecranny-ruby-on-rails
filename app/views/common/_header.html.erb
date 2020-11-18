@@ -7,7 +7,18 @@
         </div>
         <div class="column">
           <div class="columns">
-            <div class="column"><%= link_to 'Sign In', items_path %></div>
+            <% if customer_signed_in? %>
+              <div class="column">
+                <%= link_to 'Log Out', destroy_customer_session_path, method: :delete, class: "navlink" %>
+              </div>
+            <% else %>
+              <div class="column">
+                <%= link_to 'Sign Up', new_customer_registration_path, class: "navlink" %>
+              </div>
+              <div class="column">
+                <%= link_to 'Log In', new_customer_session_path, class: "navlink" %>
+              </div>
+            <% end %>
             <div class="column">
               <%= link_to "Cart (#{@item_size}) ", cart_path %></div>
               <!-- (#{ session[:items].length }) -->
