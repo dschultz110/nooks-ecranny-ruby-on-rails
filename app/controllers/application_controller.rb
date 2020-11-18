@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_session
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password province_id])
+    devise_parameter_sanitizer.permit(:edit, keys: %i[email password province_id])
+  end
 
   private
 
@@ -13,15 +21,13 @@ class ApplicationController < ActionController::Base
     end
 
     @item_size = CartItem.where(cart: @cart).size
-    types = Type.all.map { |option| [option.name, option.id ]}.to_h
-    @type_options = {'Any Type': 0}.merge(types)
-
+    types = Type.all.map { |option| [option.name, option.id] }.to_h
+    @type_options = { 'Any Type': 0 }.merge(types)
+    @provinces = Province.all.map { |option| [option.name, option.id] }.to_h
   end
 
   def customer
-    if session[:user_id]
-      @customer = Customer.find(session[:user_id])
-    end
+    @customer = Customer.find(session[:user_id]) if session[:user_id]
   end
 
   def cart

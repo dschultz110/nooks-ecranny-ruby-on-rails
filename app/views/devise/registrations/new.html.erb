@@ -11,6 +11,11 @@
       </div>
 
       <div class="field">
+        <%= f.label :province %><br />
+        <%= f.select :province_id, @provinces %>
+      </div>
+
+      <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -24,7 +29,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <%= f.submit "Sign up", :class => 'button is-danger' %>
       </div>
     <% end %>
 
