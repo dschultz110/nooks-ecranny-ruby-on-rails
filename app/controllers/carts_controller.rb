@@ -58,7 +58,20 @@ class CartsController < ApplicationController
     end
   end
 
-  def confirm; end
+  def confirm
+    customer = Customer.find(current_customer.id)
+    order = Order.create(customer: customer)
+
+    cart = Cart.find(session[:cart])
+    cart_items = CartItem.where(cart: cart)
+    cart_items.each do |cart_item|
+      OrderItem.create(order: order, item_variant_id: cart_item.item_variant.id, quantity: cart_item.quantity, buyprice: cart_item.item_variant.item.price)
+    end
+
+    session[:items] = []
+    @cart = Cart.create
+    session[:cart] = @cart.id
+  end
 
   def add_to_cart
     @selected_variant = params[:variant].to_i

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_18_214027) do
-
+ActiveRecord::Schema.define(version: 20_201_120_165_517) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -131,15 +130,12 @@ ActiveRecord::Schema.define(version: 2020_11_18_214027) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id", null: false
-    t.integer "item_id", null: false
-    t.integer "variant_id", null: false
     t.integer "quantity"
     t.integer "buyprice"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_order_items_on_item_id"
+    t.integer "item_variant_id", null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["variant_id"], name: "index_order_items_on_variant_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -195,9 +191,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_214027) do
   add_foreign_key "item_variants", "variants"
   add_foreign_key "items", "tags"
   add_foreign_key "items", "types"
-  add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "variants"
   add_foreign_key "orders", "customers"
   add_foreign_key "provinces", "gsts"
   add_foreign_key "provinces", "hsts"
