@@ -1,0 +1,21 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+              <h2 class="title is-2">Your Shipment Details</h2>
+              <div class="columns">
+                <div class="column">
+                  <p><%= @customer.name %></p>
+                  <p><%= @customer.street %></p>
+                  <p><%= @customer.city %>, <%= @province.name %></p>
+                  <p><%= @customer.postal %></p>
+                  <%= link_to 'Use a different address', edit_customer_registration_path, :class => 'button is-dark is-light mt-5' %>
+                </div>
+                <div class="column">
+                  <%= link_to raw('Review and Complete Order &nbsp; &#9654;'), review_path, :class => 'button is-danger' %>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>

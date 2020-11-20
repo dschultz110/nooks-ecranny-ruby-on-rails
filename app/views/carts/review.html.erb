@@ -1,0 +1,53 @@
+<section class="section">
+    <div class="container">
+        <div class="columns is-multiline">
+            <% if @cart_items.length > 0 %>
+            <div class="column">
+                <div class="container">
+                <h3 class="title is-3">Items: </h3>
+                    <% @cart_items.each do |cart_item| %>
+                        <div class="columns">
+                            <div class="column is-one-quarter">
+                                <%= image_tag(cart_item.item_variant.image) %>
+                            </div>
+                            <div class="column is-one-half">
+                                <%= link_to cart_item.item_variant.item.name.titleize, item_path(:id => cart_item.item_variant.item.id) %> - <%= cart_item.item_variant.variant.name %>
+                            </div>
+                            <div class="column is-one-quarter">
+                                <p>Quantity: <%= cart_item.quantity %> =
+                                <%= cart_item.item_variant.item.price * cart_item.quantity %> Bells </p>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <div class="container">
+                    <div class="columns">
+                      <div class="column is-three-quarters"></div>
+                        <div class="column is-one-quarter">
+                            <p>Subtotal: <%= @subtotal %> Bells</p>
+                            <p>PST: <%= number_with_delimiter(@PST, :delimiter => ',') %></p>
+                            <p>GST: <%= number_with_delimiter(@GST, :delimiter => ',') %></p>
+                            <p>HST: <%= number_with_delimiter(@HST, :delimiter => ',') %></p>
+                            <p class="has-text-weight-bold total">Total: <%= number_with_delimiter(@total, :delimiter => ',') %> Bells</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                  <h3 class="title is-3">Ship to: </h3>
+                  <div class="columns">
+                    <div class="column">
+                      <p><%= @customer.name %></p>
+                      <p><%= @customer.street %></p>
+                      <p><%= @customer.city %>, <%= @province.name %></p>
+                      <p><%= @customer.postal %></p>
+                    </div>
+                  </div>
+                </div>
+                <p><%= link_to raw('Confirm  &nbsp; &#9654;'), confirm_path, :class => 'button is-danger mt-5' %></p>
+            </div>
+            <% else %>
+            <p>There are no items in your cart.</p>
+            <% end %>
+        </div>
+    </div>
+</section>

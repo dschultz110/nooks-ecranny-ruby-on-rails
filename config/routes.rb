@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "/cart", to: "carts#cart", as: "cart"
   get "/checkout", to: "carts#checkout", as: "checkout"
   get "/checkout/shipment", to: "carts#shipment", as: "shipment"
+  get "/checkout/review", to: "carts#review", as: "review"
+  get "/checkout/confirm", to: "carts#confirm", as: "confirm"
 
   resources :items, only: %i[index show]
 
