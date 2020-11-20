@@ -13,31 +13,28 @@
                                 <%= link_to cart_item.item_variant.item.name.titleize, item_path(:id => cart_item.item_variant.item.id) %> - <%= cart_item.item_variant.variant.name %>
                             </div>
                             <div class="column is-one-quarter">
-                                <%= form_with(url: "/update_cart/#{cart_item.item_variant.id}") do %>
-                                    <%= label_tag("Quantity: ") %>
-                                    <%= number_field_tag 'quantity', cart_item.quantity, min: 1, max: 100, step: 1 %>
-                                    <%= submit_tag("Update", :class => 'button is-info is-light is-small') %>
-                                    <%= link_to 'Remove', remove_from_cart_path(cart_item.item_variant.id), :class => 'button is-danger is-light is-small' %>
-                                <% end %>
-                                <p><%= cart_item.item_variant.item.price * cart_item.quantity %> Bells</p>
+                                <p>Quantity: <%= cart_item.quantity %> =
+                                <%= cart_item.item_variant.item.price * cart_item.quantity %> Bells </p>
                             </div>
                         </div>
                     <% end %>
                 </div>
                 <div class="container">
                     <div class="columns">
-                        <div class="column is-three-quarters"></div>
+                      <div class="column is-three-quarters"></div>
                         <div class="column is-one-quarter">
-                            <p><%= link_to raw('Checkout  &nbsp; &#9654;'), checkout_path, :class => 'button is-danger' %></p>
+                            <p>Subtotal: <%= @subtotal %> Bells</p>
+                            <p>PST: <%= number_with_delimiter(@PST, :delimiter => ',') %></p>
+                            <p>GST: <%= number_with_delimiter(@GST, :delimiter => ',') %></p>
+                            <p>HST: <%= number_with_delimiter(@HST, :delimiter => ',') %></p>
+                            <p class="has-text-weight-bold total">Total: <%= number_with_delimiter(@total, :delimiter => ',') %> Bells</p>
+                            <p><%= link_to raw('Shipment Details  &nbsp; &#9654;'), shipment_path, :class => 'button is-danger mt-5' %></p>
                         </div>
                     </div>
                 </div>
             </div>
             <% else %>
-            <div class="column">
-                <p>There are no items in your cart.</p>
-                <p><%= link_to 'Go Shopping!', items_path, :class => 'button is-danger' %></p>
-            </div>
+            <p>There are no items in your cart.</p>
             <% end %>
         </div>
     </div>

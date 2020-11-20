@@ -7,9 +7,30 @@ class CartsController < ApplicationController
     # end
     cart = Cart.find(session[:cart])
     @cart_items = CartItem.where(cart: cart)
-
-
   end
+
+  def checkout
+    redirect_to new_customer_registration_path unless customer_signed_in?
+
+    if customer_signed_in?
+      cart = Cart.find(session[:cart])
+      @cart_items = CartItem.where(cart: cart)
+      @subtotal = 0
+      @cart_items.each do |item|
+        @subtotal += item.item_variant.item.price * item.quantity
+      end
+
+      customer = Customer.find(current_customer.id)
+      province = Province.find(customer.province_id)
+      @PST = (@subtotal * province.pst).to_i
+      @GST = (@subtotal * province.gst.rate).to_i
+      @HST = (@subtotal * province.hst.rate).to_i
+
+      @total = (@subtotal + @PST + @GST + @HST).to_i
+    end
+  end
+
+  def shipment; end
 
   def add_to_cart
     @selected_variant = params[:variant].to_i

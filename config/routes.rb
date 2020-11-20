@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # post "/add_to_cart/:id", to: "items#add_to_cart", as: "add_to_cart"
   get "/remove_from_cart/:id", to: "carts#remove_from_cart", as: "remove_from_cart"
   get "/cart", to: "carts#cart", as: "cart"
+  get "/checkout", to: "carts#checkout", as: "checkout"
+  get "/checkout/shipment", to: "carts#shipment", as: "shipment"
 
   resources :items, only: %i[index show]
 
