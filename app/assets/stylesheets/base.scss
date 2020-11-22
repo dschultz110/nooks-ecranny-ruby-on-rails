@@ -112,11 +112,15 @@ hr {
 
 input[type=text], input[type=email], input[type=password], select {
     padding: 12px 20px;
-    margin: 8px auto;
+    margin: 8px 0;
     display: inline-block;
     border: 1px solid $dark-blue;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+.button.with-margin {
+    margin-top: 8px;
 }
 
 input[type=submit] {

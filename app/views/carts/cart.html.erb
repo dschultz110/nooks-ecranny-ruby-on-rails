@@ -16,8 +16,10 @@
                                 <%= form_with(url: "/update_cart/#{cart_item.item_variant.id}") do %>
                                     <%= label_tag("Quantity: ") %>
                                     <%= number_field_tag 'quantity', cart_item.quantity, min: 1, max: 100, step: 1 %>
-                                    <%= submit_tag("Update", :class => 'button is-info is-light is-small') %>
-                                    <%= link_to 'Remove', remove_from_cart_path(cart_item.item_variant.id), :class => 'button is-danger is-light is-small' %>
+                                    <p>
+                                        <%= submit_tag("Update", :class => 'button is-info is-light is-small') %>
+                                        <%= link_to 'Remove', remove_from_cart_path(cart_item.item_variant.id), :class => 'button with-margin is-danger is-light is-small' %>
+                                    </p>
                                 <% end %>
                                 <p><%= cart_item.item_variant.item.price * cart_item.quantity %> Bells</p>
                             </div>
