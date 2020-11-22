@@ -5,6 +5,6 @@ class VariantsController < ApplicationController
 
   def show
     @variant = Variant.find(params[:id])
-    @items = @variant.items.paginate(:page => params[:page], per_page: 20)
+    @items = @variant.items.page params[:page]
   end
 end

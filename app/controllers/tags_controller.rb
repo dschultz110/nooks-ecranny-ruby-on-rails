@@ -5,6 +5,6 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
-    @items = @tag.items.paginate(:page => params[:page], per_page: 20)
+    @items = @tag.items.page params[:page]
   end
 end

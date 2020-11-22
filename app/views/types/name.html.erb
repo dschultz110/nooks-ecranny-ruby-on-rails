@@ -3,7 +3,7 @@
         <h2 class="title is-3"><%= @type.name %> Items</h2>
         <div class="columns is-multiline">
             <%= render partial: 'items/item', collection: @items %>
-            <%= will_paginate @items %>
+            <%= paginate @items %>
         </div>
     </div>
 </section>

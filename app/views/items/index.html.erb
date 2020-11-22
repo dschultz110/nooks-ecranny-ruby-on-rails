@@ -3,7 +3,7 @@
         <h2 class="title is-3"><%= @search ? "#{@type.name unless @type_id == 0} Items found for '#{@search_term}':" : "All Items" %></h2>
         <div class="columns is-multiline">
             <%= render partial: 'item', collection: @items %>
-            <%= will_paginate @items %>
+            <div class="column is-3"><%= paginate @items %></div>
         </div>
     </div>
 </section>
