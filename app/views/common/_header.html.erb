@@ -1,59 +1,49 @@
-<header>
-  <section class="section">
-    <div class="container">
-      <div class="columns links">
-        <div class="column">
-          <h1 class="title is-2"><%= link_to "Nook's eCranny", root_path %></h1>
-        </div>
-        <div class="column">
-          <div class="columns">
-            <% if customer_signed_in? %>
-              <div class="column">
-                <%= link_to 'Log Out', destroy_customer_session_path, method: :delete, class: "navlink" %>
-              </div>
-            <% else %>
-              <div class="column">
-                <%= link_to 'Sign Up', new_customer_registration_path, class: "navlink" %>
-              </div>
-              <div class="column">
-                <%= link_to 'Log In', new_customer_session_path, class: "navlink" %>
-              </div>
-            <% end %>
-            <div class="column">
-              <%= link_to "Cart (#{@item_size}) ", cart_path %></div>
-          </div>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column"></div>
-          <div class="column">
-            <div class="columns links">
-              <div class="column"><%= link_to 'Shop', items_path, class: "navlink" %></div>
-              <div class="column"><%= link_to 'Categories', types_path, class: "navlink" %></div>
-              <div class="column"><%= link_to 'Tags', tags_path, class: "navlink" %></div>
-              <div class="column"><%= link_to 'Variants', variants_path, class: "navlink" %></div>
-            </div>
-            <div class="scontent"></div>
-          </div>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= link_to image_tag('logo.png'), root_path %>
+    <%= link_to "Nook's eCranny", root_path, :class => "navbar-item header-title" %>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Shop
+        </a>
+
+        <div class="navbar-dropdown">
+          <%= link_to "All Items", items_path, :class => "navbar-item" %>
+          <%= link_to "Categories", types_path, :class => "navbar-item" %>
+          <%= link_to "Tags", tags_path, :class => "navbar-item" %>
+          <%= link_to "Variants", variants_path, :class => "navbar-item" %>
         </div>
       </div>
-      <div class="container">
-        <div class="columns">
-          <div class="column">
-            <br>
-            <%= form_for "", url: items_path, role: "search", method: :get do %>
-              <%= text_field_tag :search, @search_term, placeholder: "Search items..." %>
-              <%= select_tag :type_id, options_for_select(@type_options) %>
-              <%= submit_tag("Search Items") %>
-            <% end %>
-          </div>
+      <div class="navbar-item non-hoverable without-arrow">
+        <%= form_for "", url: items_path, role: "search", method: :get do %>
+          <%= text_field_tag :search, @search_term, placeholder: "Search items..." %>
+          <%= select_tag :type_id, options_for_select(@type_options) %>
+          <%= submit_tag("Search Items", :class => "button is-danger") %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <%= link_to "#{image_tag("bells.png")} Cart (#{@item_size})".html_safe, cart_path, :class => "navbar-item"  %>
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if customer_signed_in? %>
+            <%= link_to "Log Out", destroy_customer_session_path, method: :delete, :class => "button is-danger" %>
+          <% else %>
+            <%= link_to "Sign Up", new_customer_registration_path, :class => "button is-danger" %>
+            <%= link_to "Log In", new_customer_session_path, :class => "button is-danger" %>
+          <% end %>
         </div>
       </div>
-      <div class="container">
-        <div class="column">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
-        </div>
-      </div>
-  </section>
-</header>
+    </div>
+  </div>
+</nav>
