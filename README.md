@@ -2,10 +2,10 @@
 
 ## Overview
 This application is meant to demonstrate an eCommerce website using the Ruby on Rails framework.
-It uses information from the [Animal Crossing New Horizons API]("http://acnhapi.com/doc").
+It uses information from the [Animal Crossing New Horizons API]("http://acnhapi.com/doc") (http://acnhapi.com/doc).
 
 ## Demo
-A [demo of this app]("https://nooks-ecranny.herokuapp.com/") is up and running minus the sign-up functionality.
+A [demo of this app]("https://nooks-ecranny.herokuapp.com/") (https://nooks-ecranny.herokuapp.com/) is up and running minus the sign-up functionality.
 
 ## Configuration
 To get this project running, after cloning this repository enter the following commands:
